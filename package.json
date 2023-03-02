@@ -1,0 +1,33 @@
+{
+  "name": "personal-site-v2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "keywords": [],
+  "author": "Haris Raza",
+  "license": "MIT",
+  "dependencies": {
+    "@fontsource/allerta": "^4.5.9",
+    "@fontsource/allerta-stencil": "^4.5.10",
+    "@fontsource/amiko": "^4.5.10",
+    "@fontsource/bebas-neue": "^4.5.9",
+    "@react-three/drei": "^9.56.25",
+    "@react-three/fiber": "^8.11.2",
+    "framer-motion": "^9.0.4",
+    "glslify-loader": "^2.0.0",
+    "gray-matter": "^4.0.3",
+    "next": "^13.1.6",
+    "raw-loader": "^4.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "remark": "^14.0.2",
+    "remark-html": "^15.0.2",
+    "three": "^0.149.0"
+  }
+}
