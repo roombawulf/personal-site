@@ -1,6 +1,8 @@
-uniform float u_time;
+// DistortMaterial
+uniform float time;
+uniform vec3 color;
 
-varying vec2 v_uv;
+varying vec3 v_normal;
 
 //	Classic Perlin 3D Noise 
 //	by Stefan Gustavson
@@ -77,24 +79,46 @@ float cnoise(vec3 P){
   return 2.2 * n_xyz;
 }
 
-void main() {
+// Return orthogonal vector
+vec3 orthoganal(vec3 v){
+    return normalize(
+        abs(v.x) > abs(v.z) ? vec3(-v.y, v.x, 0.0) : vec3(0.0, -v.z, v.y)
+    );
+}
+
+// Noise displacement 
+float displace(vec3 n){
+
+    float noise = 0.5 * cnoise(n + time * 0.25);
+    float limit = smoothstep(0.85, 0.75, n.y);
+
+    return noise;
+}
+
+void main(){
     
-	vec2 uv = 5.0 * v_uv + 0.1 * u_time;
-    vec3 color = vec3(0.0);
-    vec3 posy = vec3(uv, 1.0);
+    vec3 displacedPos = position + normal * displace(position);
+
+    // Get tangent and bitangent vectors
+    vec3 tangent = orthoganal(normal);
+    vec3 bitangent = normalize(cross(tangent, normal));
+
+    // Get neighbour positions using tangent and bitangent
+    float eps = 0.01;
+    vec3 nearby1 = position + tangent * eps;
+    vec3 nearby2 = position + bitangent * eps;
+
+    // Get displaced neighbours after run through displacement function()
+    vec3 displacedNearby1 = nearby1 + normal * displace(nearby1);
+    vec3 displacedNearby2 = nearby2 + normal * displace(nearby2);
+
+    // Calculate displaced normal from displaced tangent and bitangent
+    vec3 displacedTangent = displacedNearby1 - displacedPos;
+    vec3 displacedBitangent = displacedNearby2 - displacedPos;
+    vec3 displacedNormal = normalize(cross(displacedTangent, displacedBitangent));
+
+    v_normal = -displacedNormal;
+
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(displacedPos, 1.0);
     
-	//perline noise -> cnoise()
-    float freq1 = cnoise(posy * 1.0); 
-    float freq2 = cnoise(posy * 3.0); 
-    float freq3 = cnoise(posy * 0.5); 
-
-    float amp1 = 1.0;
-    float amp2 = 0.1;
-    float amp3 = 0.25;
-
-	float e = (amp1 * freq1 + amp2 * freq2 + amp3 * freq3) / (amp1 + amp2 + amp3);
-
-	color += e;
-
-    gl_FragColor = vec4(color, 1.0);
 }
