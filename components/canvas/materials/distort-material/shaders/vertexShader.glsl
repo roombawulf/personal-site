@@ -3,6 +3,7 @@ uniform float time;
 uniform vec3 color;
 
 varying vec3 v_normal;
+varying vec3 v_pos;
 
 //	Classic Perlin 3D Noise 
 //	by Stefan Gustavson
@@ -89,10 +90,12 @@ vec3 orthoganal(vec3 v){
 // Noise displacement 
 float displace(vec3 n){
 
-    float noise = 0.5 * cnoise(n + time * 0.25);
-    float limit = smoothstep(0.85, 0.75, n.y);
+    float noise = 2.0 * cnoise(10.0* n + time * 0.25);
+    float limitz = sin(smoothstep(-0.3, 0.3, n.z)*3.14);
+    float limitx = sin(smoothstep(-0.3, 0.3, n.x)*3.14);
+    float limity = sin(smoothstep(-0.6, 0.6, n.y)*3.14);
 
-    return noise;
+    return (noise * ((limitz + limitx) * limity)) + (0.01 * noise);
 }
 
 void main(){
@@ -101,7 +104,7 @@ void main(){
 
     // Get tangent and bitangent vectors
     vec3 tangent = orthoganal(normal);
-    vec3 bitangent = normalize(cross(tangent, normal));
+    vec3 bitangent = normalize(cross(normal, tangent));
 
     // Get neighbour positions using tangent and bitangent
     float eps = 0.01;
@@ -117,8 +120,13 @@ void main(){
     vec3 displacedBitangent = displacedNearby2 - displacedPos;
     vec3 displacedNormal = normalize(cross(displacedTangent, displacedBitangent));
 
-    v_normal = -displacedNormal;
+    
+    v_normal = displacedNormal;
+    csm_Normal = displacedNormal;
+    
+    v_pos = displacedPos;
+    csm_Position = displacedPos;
 
-    gl_Position = projectionMatrix * modelViewMatrix * vec4(displacedPos, 1.0);
+    // gl_Position = projectionMatrix * modelViewMatrix * vec4(displacedPos, 1.0);
     
 }

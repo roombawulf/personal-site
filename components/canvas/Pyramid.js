@@ -1,24 +1,30 @@
 import { extend, useFrame } from "@react-three/fiber"
+import { useGLTF } from "@react-three/drei"
 import { useRef } from "react"
-import DistortMaterial from "./materials/distort-material/DistortMaterial"
 
-extend({ DistortMaterial })
+import DistortMaterial from './materials/distort-material/DistortMaterial'
 
 function Pyramid(){
 
-    const material = useRef()
+    const { nodes } = useGLTF('/models/pyramid.glb')
+    const pyramid = useRef()
 
     useFrame((state, delta) => {
         const { clock } = state
 
-        material.current.time = clock.elapsedTime
+        pyramid.current.rotation.y = clock.elapsedTime * 0.1
 
     })
 
     return(
-        <mesh>
-            <icosahedronGeometry args={[1, 128]} />
-            <distortMaterial key={DistortMaterial.key} ref={material} color='orange'/>
+        <mesh 
+        geometry={nodes.Cube.geometry}
+        rotation={[Math.PI, 0 , 0]}
+        ref={pyramid}
+        scale={1.5}
+        >
+            <DistortMaterial />
+            
         </mesh>
     )
 }
