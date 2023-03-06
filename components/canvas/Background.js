@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { BackSide } from 'three'
+import { BackSide, DoubleSide } from 'three'
 import { extend, useFrame } from '@react-three/fiber'
 import BackgroundMaterial from './materials/background-material/BackgroundMaterial'
 
@@ -10,7 +10,7 @@ function Background(){
     const material = useRef()
 
     useFrame(({ clock }) => {
-        material.current.time = clock.elapsedTime * 0.5
+        material.current.time = clock.elapsedTime * 0.2
     })
 
     return(
@@ -19,7 +19,7 @@ function Background(){
             <backgroundMaterial 
             ref={material}
             key={BackgroundMaterial.key} 
-            side={BackSide}
+            side={ BackSide }
             />
         </mesh>
     )

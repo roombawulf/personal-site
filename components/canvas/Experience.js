@@ -16,9 +16,10 @@ function Experience({ className }){
         <div className={ className }>
             <Canvas>
                 <Background />
+                {/* <ambientLight color='orange' /> */}
                 <Pyramid />
-                <Environment near={1} far={100} resolution={256}>
-                    <Background />
+                <Environment near={1} far={100} resolution={128}>
+                    <Background />  
                 </Environment>
                 <OrbitControls />
             </Canvas>

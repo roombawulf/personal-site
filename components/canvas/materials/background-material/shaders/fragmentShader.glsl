@@ -2,7 +2,6 @@
 // http://patriciogonzalezvivo.com
 
 uniform float time;
-varying vec2 v_uv;
 varying vec3 v_pos;
 
 float hash(vec2 p) {vec3 p3 = fract(vec3(p.xyx) * 0.13); p3 += dot(p3, p3.yzx + 3.333); return fract((p3.x + p3.y) * p3.z); }
@@ -31,37 +30,50 @@ float noise(vec3 x) {
                    mix( hash(n + dot(step, vec3(0, 1, 1))), hash(n + dot(step, vec3(1, 1, 1))), u.x), u.y), u.z);
 }
 
+const mat3 mtx = mat3( 
+    0.80,  0.60, 0.0, 
+    -0.60,  0.80, 0.0,
+    0.0, 0.60, -0.80
+    );
+float fbm( vec3 p ){
+    float f = 0.0;
+    f += 0.500000*noise( p + time * 0.25); p = mtx*p*2.02;
+    // f += 0.031250*noise( p ); p = mtx*p*2.01;
+    // f += 0.250000*noise( p ); p = mtx*p*2.03;
+    //f += 0.125000*noise( p ); p = mtx*p*2.01;
+    //f += 0.062500*noise( p ); p = mtx*p*2.04;
+    //f += 0.015625*noise( p );
 
-float fbm(vec3 x) {
-	float v = 0.0;
-	float a = 0.5;
-	vec3 shift = vec3(100);
-	for (int i = 0; i < 8; ++i) {
-		v += a * noise(x);
-		x = x * 2.0 + shift;
-		a *= 0.5;
-	}
-	return v;
+    return f/0.86875;
 }
 
-float pattern(vec3 n){
-    vec3 p = vec3(
-        fbm(n), 
-        fbm(n + vec3(1.0, 2.0, -1.0)),
-        fbm(n + vec3(4.2, 1.0, 3.2))
-    );
+float pattern(in vec3 n, out vec3 p, out vec3 r){
 
-    return fbm(n + (2.0 * p));
+    p.x = (fbm(n));
+    p.y = (fbm(n + vec3(3.2,2.6,7.3)));
+    p.z = (fbm(n + vec3(5.1,2.6,1.9)));
+    
+    r.x = (fbm(n + (2.0 * p)));
+    r.y = (fbm(n + (2.0 * p) + vec3(1.2,6.2,3.7)));
+    r.z = (fbm(n + (2.0 * p) + vec3(-9.1,6.2,2.9)));
+
+    return fbm(n + (6.0 * r));
 }
 
 
 void main() {
 
-    vec3 pos = v_pos * 3.0;
-    vec3 f_color = vec3(0.0);
+    vec3 pos = (v_pos * 1.0);
+    vec3 p;
+    vec3 r;
+    float f = pattern(pos, p, r);
 
-    f_color += pattern(pos);
+    vec3 col = vec3(0.2, 0.1, 0.4);
+    col = mix( col, vec3(0.3,0.05,0.05), f);
+    col = mix( col, vec3(0.9,0.9,0.9), dot(r,r) );
+    col = mix( col, vec3(0.5,0.2,0.2), 0.5*p.y*p.y );
 
-    gl_FragColor = vec4(f_color, 1.0);
+
+    gl_FragColor = vec4(col, 1.0);
 
 }

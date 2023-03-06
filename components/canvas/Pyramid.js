@@ -17,10 +17,10 @@ function Pyramid(){
 
     return(
         <mesh
-        geometry={nodes.Cube.geometry}
         rotation={[Math.PI, 0 , 0]}
         ref={pyramid}
         >
+            <icosahedronBufferGeometry args={[1,128]} />
             <DistortMaterial />
         </mesh>
     )
