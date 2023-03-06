@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { DoubleSide } from 'three'
+import { BackSide } from 'three'
 import { extend, useFrame } from '@react-three/fiber'
 import BackgroundMaterial from './materials/background-material/BackgroundMaterial'
 
@@ -19,7 +19,7 @@ function Background(){
             <backgroundMaterial 
             ref={material}
             key={BackgroundMaterial.key} 
-            side={DoubleSide}
+            side={BackSide}
             />
         </mesh>
     )

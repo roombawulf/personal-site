@@ -17,7 +17,7 @@ function Experience({ className }){
             <Canvas>
                 <Background />
                 <Pyramid />
-                <Environment frames={Infinity} near={1} far={100} resolution={256}>
+                <Environment near={1} far={100} resolution={256}>
                     <Background />
                 </Environment>
                 <OrbitControls />

@@ -44,12 +44,24 @@ float fbm(vec3 x) {
 	return v;
 }
 
+float pattern(vec3 n){
+    vec3 p = vec3(
+        fbm(n), 
+        fbm(n + vec3(1.0, 2.0, -1.0)),
+        fbm(n + vec3(4.2, 1.0, 3.2))
+    );
+
+    return fbm(n + (2.0 * p));
+}
+
 
 void main() {
 
-    vec3 f = vec3(0.0);
-    f += fbm(5.0 * v_pos + time);
+    vec3 pos = v_pos * 3.0;
+    vec3 f_color = vec3(0.0);
 
-    gl_FragColor = vec4(f, 1.0);
+    f_color += pattern(pos);
+
+    gl_FragColor = vec4(f_color, 1.0);
 
 }

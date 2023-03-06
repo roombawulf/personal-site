@@ -14,7 +14,9 @@ function App({ Component, pageProps }) {
       <Experience className={'canvas'} />
       <Header  className={'header'}/>
       <AnimatePresence mode='wait' initial={false}>
-        <Component {...pageProps} />
+        <main className={'main'}>
+          <Component {...pageProps} />
+        </main>
       </AnimatePresence>
     </>
   )
