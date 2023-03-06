@@ -6,17 +6,17 @@ import '../styles/layout.css'
 
 import '@fontsource/amiko'
 import '@fontsource/bebas-neue'
+import Experience from '../components/canvas/Experience'
 
 function App({ Component, pageProps }) {
   return (
+    <>
+      <Experience className={'canvas'} />
+      <Header  className={'header'}/>
       <AnimatePresence mode='wait' initial={false}>
-        <>
-          <Header className='header' />
-          <main className='main' >
-            <Component {...pageProps} />
-          </main>
-        </>
+        <Component {...pageProps} />
       </AnimatePresence>
+    </>
   )
 }
 

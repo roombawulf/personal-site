@@ -95,7 +95,7 @@ float displace(vec3 n){
     float limitx = sin(smoothstep(-0.3, 0.3, n.x)*3.14);
     float limity = sin(smoothstep(-0.6, 0.6, n.y)*3.14);
 
-    return (noise * ((limitz + limitx) * limity)) + (0.01 * noise);
+    return (noise * ((limitz + limitx) * limity));
 }
 
 void main(){
@@ -119,14 +119,10 @@ void main(){
     vec3 displacedTangent = displacedNearby1 - displacedPos;
     vec3 displacedBitangent = displacedNearby2 - displacedPos;
     vec3 displacedNormal = normalize(cross(displacedTangent, displacedBitangent));
-
     
     v_normal = displacedNormal;
-    csm_Normal = displacedNormal;
-    
     v_pos = displacedPos;
-    csm_Position = displacedPos;
 
-    // gl_Position = projectionMatrix * modelViewMatrix * vec4(displacedPos, 1.0);
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(displacedPos, 1.0);
     
 }

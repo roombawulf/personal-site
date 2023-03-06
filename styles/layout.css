@@ -1,6 +1,19 @@
+.canvas{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+}
+
 .header{
-    
+
+    position: relative;
+
+    max-width: 1080px;
     display: flex;
+
+    margin-inline: auto;
+
     justify-content: center;
     align-items: center;
     gap: 10vw;
@@ -9,6 +22,8 @@
 
 .main{
 
+    max-width: 1080px;
+    margin-inline: auto;
     height: inherit;
 
 }

@@ -7,6 +7,6 @@ varying vec3 v_pos;
 
 void main(){
 
-    // csm_DiffuseColor = vec4(color, 1.0);
+    gl_FragColor = vec4(v_normal, 1.0);
 
 }

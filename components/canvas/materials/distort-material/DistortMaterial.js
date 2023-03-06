@@ -1,45 +1,49 @@
 import * as THREE from 'three'
-import CustomShaderMaterial from 'three-custom-shader-material'
-import { useRef } from 'react'
-import { useFrame } from '@react-three/fiber'
-
 import vertexShader from './shaders/vertexShader.glsl'
 import fragmentShader from './shaders/fragmentShader.glsl'
-
-
-// const DistortMaterial = shaderMaterial(
-//     { time: 0.0, color: new THREE.Color('orange')},
-//     vertexShader,
-//     fragmentShader
-// )
-// export default DistortMaterial
+import { useRef } from 'react'
+import { useFrame } from '@react-three/fiber'
 
 
 function DistortMaterial() {
 
-    const material = useRef()
+    const time = useRef({value: 0.0})
+    useFrame(({ clock }) => time.current.value = clock.elapsedTime)
 
-    useFrame((state, _) => {
-        material.current.uniforms.time.value = state.clock.elapsedTime
-    })
+    const attachCustomShader = (shader) => {
+
+        const vertexHeader = vertexShader.split('\n').slice(0, 101).join('\n')
+        const vertexMain = vertexShader.split('\n').slice(101, -3).join('\n')
+    
+        shader.uniforms.time = time.current
+    
+        shader.vertexShader = `${vertexHeader}${shader.vertexShader}`
+        shader.vertexShader = shader.vertexShader.replace(
+            `void main() {`,
+            `${vertexMain}`
+        )
+    
+        shader.vertexShader = shader.vertexShader.replace(
+            `#include <displacementmap_vertex>`,
+            `transformed = displacedPos;`
+        )
+    
+        shader.vertexShader = shader.vertexShader.replace(
+            `#include <defaultnormal_vertex>`,
+            THREE.ShaderChunk.defaultnormal_vertex.replace(
+                `vec3 transformedNormal = objectNormal`, 
+                `vec3 transformedNormal = displacedNormal;`
+            )
+        )
+    }
 
     return(
-
-        <CustomShaderMaterial
-        ref={material}
-        baseMaterial={THREE.MeshPhysicalMaterial}
-        vertexShader={vertexShader}
-        fragmentShader={fragmentShader}
-        uniforms={{ 
-            time: { value: 0.0 }, 
-            color: {value: new THREE.Color('white')} 
-        }}
-        roughness={0.2}
-        metalness={0.75}
-        color='orange'
+        <meshPhysicalMaterial
+        onBeforeCompile={ (shader) => attachCustomShader(shader)}
+        color='white'
+        roughness={0.0}
+        metalness={0.9}
         />
-
     )
-
 }
 export default DistortMaterial
