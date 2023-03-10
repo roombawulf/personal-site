@@ -13,9 +13,9 @@ function NavItem({path, children}){
 function Header({ className }){
     return(
         <header className={className}>
-            <NavItem path='/'> Haris. </NavItem>
-            <NavItem path='/works'> Works. </NavItem>
-            <NavItem path='/contact'> Contact. </NavItem>
+            <NavItem path='#'> Haris. </NavItem>
+            <NavItem path='#works'> Works. </NavItem>
+            <NavItem path='#contact'> Contact. </NavItem>
         </header>
     )
 }

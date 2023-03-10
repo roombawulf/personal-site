@@ -1,19 +1,29 @@
 .canvas{
-    position: fixed;
-    height: 100%;
+    position: relative;
+    height: 105vh;
     width: 100%;
-    z-index: 0;
+}
+
+.gradient-merge{
+    position: relative;
+    top: -5vh;
+    height: 10vh;
+    background: transparent;
+    background: linear-gradient(0deg,#080808,30%,#080808 40%,#080808 55%,rgba(0.8,0.8,0.8,0));
 }
 
 .header{
 
-    position: relative;
+    position: fixed;
     display: flex;
+
+    z-index: 1;
 
     align-items: center;
     padding: 1rem 2rem 0rem 1rem;
     gap: 1rem;
     height: fit-content;
+    width: 100%;
 
 }
 
@@ -21,12 +31,14 @@
     margin-inline-end: auto;
 }
 
-.main{
-
-    position: relative;
-
+.contact-container{
     max-width: 1080px;
     margin-inline: auto;
-    height: fit-content;
+    height: 100%;
+}
 
+.works-container{
+    max-width: 1920px;
+    margin-inline: auto;
+    height: 100%;
 }

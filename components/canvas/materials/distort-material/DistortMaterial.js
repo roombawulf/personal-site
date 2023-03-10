@@ -41,7 +41,7 @@ function DistortMaterial() {
         <meshPhysicalMaterial
         onBeforeCompile={ (shader) => attachCustomShader(shader)}
         color='silver'
-        roughness={0.2}
+        roughness={0.0}
         reflectivity={1.0}
         />
     )

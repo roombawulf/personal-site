@@ -6,6 +6,8 @@ module.exports = {
             use: ['raw-loader','glslify-loader'],
         });
 
+        config.resolve.fallback = { fs: false }
+
         return config;
     }
 };

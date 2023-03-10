@@ -14,7 +14,7 @@ function Background(){
     })
 
     return(
-        <mesh scale={10}>
+        <mesh scale={100}>
             <sphereGeometry />
             <backgroundMaterial 
             ref={material}
