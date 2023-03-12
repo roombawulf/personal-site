@@ -1,12 +1,12 @@
 import { useFrame } from "@react-three/fiber"
-import { useGLTF, CubeCamera, MeshRefractionMaterial, MeshTransmissionMaterial } from "@react-three/drei"
-import { useEffect, useRef, useMemo } from "react"
+import { useGLTF } from "@react-three/drei"
+import { useRef, useMemo } from "react"
 import { Vector3 } from "three"
 
 
 import DistortMaterial from './materials/distort-material/DistortMaterial'
 
-function Pyramid({ texture }){
+function Pyramid(){
 
     const { nodes } = useGLTF('/models/pyramid.glb')
     const pyramid = useRef()
@@ -17,14 +17,12 @@ function Pyramid({ texture }){
         return new Vector3(0.9238795, 0, 0.3826834)
     },[])
     
-    useFrame(({ clock }, delta) => {
-
-        group.current.rotateOnAxis(rotationAxis,delta * 0.1)
-
-    })
+    // useFrame(({ clock }, delta) => {
+    //     group.current.rotateOnAxis(rotationAxis,delta * 0.1)
+    // })
 
     return(
-        <group ref={group}>
+        <group ref={group} dispose={null}>
             <mesh
             geometry={nodes.Cube.geometry}
             scale={1}
@@ -36,4 +34,5 @@ function Pyramid({ texture }){
         </group>
     )
 }
+// useGLTF.preload('/models/pyramid.glb')
 export default Pyramid

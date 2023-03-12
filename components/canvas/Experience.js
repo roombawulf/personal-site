@@ -1,6 +1,6 @@
-import { OrbitControls, Environment, Bounds } from '@react-three/drei'
-import { Canvas,} from '@react-three/fiber'
-
+import { Canvas } from '@react-three/fiber'
+import { Perf } from 'r3f-perf'
+import { Environment } from '@react-three/drei'
 import Pyramid from './Pyramid'
 import Background from './Background'
 import { EffectComposer, Noise } from '@react-three/postprocessing'
@@ -10,8 +10,9 @@ function Experience({ className }){
     return (
         <div className={className}>
             <Canvas>
+                <Perf />
                 <Background />
-                <Environment near={1} far={100} resolution={128}>
+                <Environment near={0.1} far={100} resolution={64}>
                     <Background />  
                 </Environment>
                 <Pyramid />
