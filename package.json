@@ -17,6 +17,7 @@
     "@fontsource/allerta-stencil": "^4.5.10",
     "@fontsource/amiko": "^4.5.10",
     "@fontsource/bebas-neue": "^4.5.9",
+    "@fontsource/cairo": "^4.5.13",
     "@react-three/drei": "^9.56.25",
     "@react-three/fiber": "^8.11.2",
     "@react-three/postprocessing": "^2.7.0",

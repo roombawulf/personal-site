@@ -1,6 +1,4 @@
-import Experience from "../components/canvas/Experience"
-import Works from "../components/works"
-import Contact from "../components/contact"
+import Landing from '../components/Landing'
 
 import { getWorksData } from "../lib/works"
 export async function getStaticProps() {
@@ -12,15 +10,9 @@ export async function getStaticProps() {
     }
 }
 
-function Main( { allWorksData }) {
+function Home({ allWorksData }) {
     return( 
-            <>
-                <Experience className={'canvas'} />
-                <div className='gradient-merge'></div>
-                <Works data={allWorksData}/>
-                <Contact />
-            </>
-            
+        <Landing />    
     ) 
 }
-export default Main
+export default Home

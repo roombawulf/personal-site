@@ -1,29 +1,15 @@
 *,
 *::before,
 *::after{
-
     box-sizing: border-box;
 }
 
-:root {
-
-    --bg-color: #080808;
-    --text-color: #e1e1e1;
-}
-
 html,
-body, 
-#__next {
+body{
 
-    background-color: var(--bg-color);
-    color: var(--text-color);
-
-    font-family: "Bebas Neue", cursive;
-    font-weight: 400;
-
-    margin: 0;
     height: 100%;
+    margin: 0;
 
-    overflow: scroll;
-
+    font-family: 'Cairo', sans-serif;
+    background-color: #FAEDCD;
 }
