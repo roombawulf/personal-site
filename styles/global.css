@@ -12,4 +12,6 @@ body{
 
     font-family: 'Cairo', sans-serif;
     background-color: #FAEDCD;
+
+    overflow: scroll;
 }

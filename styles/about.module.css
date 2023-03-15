@@ -1,0 +1,55 @@
+.about{
+    margin: 0;
+    padding: 0;
+    margin-inline: auto;
+    height: fit-content;
+    max-width: 1920px;
+
+    padding-inline: 2rem;
+}
+
+.greetings,
+.me{
+    margin: 0;
+    padding: 0;
+    height: 100svh;
+}
+
+.greetings{
+    display: flex;
+}
+
+.introHeader{
+    margin: 0;
+    padding: 0;
+    font-size: 8rem;
+}
+.nameHeader{
+    margin: 0;
+    padding: 0;
+    font-size: 4rem;
+    
+    width: 100%;
+    align-self: flex-end;
+    text-align: end;
+}
+.description{
+    font-size: 2rem;
+    text-align: justify;
+    width: 60%;
+}
+
+@media screen and (max-width: 800px) {
+    .introHeader{
+        font-size: 3rem;
+    }
+    .nameHeader{
+        font-size: 1.5rem;
+    }
+    .description{
+        font-size: 1rem;
+        width: fit-content;
+        text-align: justify;
+    }
+    
+}

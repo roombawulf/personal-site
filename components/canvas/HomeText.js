@@ -24,7 +24,7 @@ function HomeText(){
 
     useLayoutEffect(() => {
         let context = gsap.context(() => {
-            gsap.to(text.current, { fillOpacity: 1, ease: 'power2.inOut', duration: 2})
+            gsap.to(text.current, { fillOpacity: 1, ease: 'power2.inOut', duration: 1.5, delay: 1.5})
         })
     })
 
