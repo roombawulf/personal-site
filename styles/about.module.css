@@ -1,11 +1,7 @@
 .about{
     margin: 0;
     padding: 0;
-    margin-inline: auto;
     height: fit-content;
-    max-width: 1920px;
-
-    padding-inline: 2rem;
 }
 
 .greetings,

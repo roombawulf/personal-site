@@ -1,0 +1,20 @@
+.grid{
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+
+    margin-inline: auto;
+    max-width: 1700px;
+    
+}
+
+.main{
+    grid-column: 2;
+    height: fit-content;
+    padding-inline: 1rem;
+}
+
+.nav{
+    position: sticky;
+    top: 0;
+    height: fit-content;
+}

@@ -1,0 +1,22 @@
+.name{
+    font-weight: bold;
+    font-size: 3rem;
+
+    text-align: right;
+
+    padding: 10rem 0rem 3rem 0rem;
+}
+
+.navlist{
+    list-style: none;
+    padding: 0;
+}
+
+.navlist > * {
+    text-align: right;
+    transition: color 0.5s;
+}
+
+.navlist > *:hover{
+    color: rgb(40, 40, 40);
+}
