@@ -1,6 +1,7 @@
 import About from '../components/About'
 import Landing from '../components/Landing'
 import Spacer from '../components/Spacer'
+import Works from '../components/Works'
 
 import { getWorksData } from "../lib/works"
 export async function getStaticProps() {
@@ -16,8 +17,14 @@ function Home({ allWorksData }) {
     return( 
         <>
             <Landing />
+
             <Spacer />
-            <About />    
+
+            <About />
+
+            <Spacer />
+
+            <Works />    
         </>
     ) 
 }

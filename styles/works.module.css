@@ -1,0 +1,41 @@
+.works {
+    height: 100svh;
+    margin-inline: auto;
+    max-width: 1920px;
+
+    padding-inline: 2rem;
+}
+
+.projects{
+    display: flex;
+    flex-direction: column;
+    height: inherit;
+}
+
+.projects > * {
+    font-size: 6rem;
+    font-weight: 400;
+    width: fit-content;
+
+    text-decoration: none;
+    text-transform: uppercase;
+    color: black;
+
+    transition: letter-spacing 0.5s, color 0.5s;
+}
+
+.projects > *:hover{
+    letter-spacing: 0.1rem;
+}
+
+.ruleContainer {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.rule {
+    width: 100%;
+    border-bottom: solid 2px black;
+}
