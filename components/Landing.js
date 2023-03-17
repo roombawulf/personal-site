@@ -5,27 +5,13 @@ import { useEffect, useRef } from "react"
 
 function Landing(){
 
-    const topline = useRef()
-    const bottomline = useRef()
-
-    useEffect(() => {
-        let context = gsap.context(() => {
-            gsap.to([topline.current, bottomline.current], {width: '95%', ease: 'power2.inOut', duration: 2, stagger: 0.2})
-        })
-    })
-
     return (
         <div className={styles.landingContainer}>
-            <div className={styles.ruleContainer}>
-                <div className={styles.lineRule} ref={topline}/>
+            <div className={styles.greeting}>
+                Hi,
             </div>
-            
-            <div className={styles.canvasContainer}>
-                <Experience />
-            </div>
-            
-            <div className={styles.ruleContainer}>
-                <div className={styles.lineRule} ref={bottomline} />
+            <div className={styles.greeting}>
+                I'm a software developer and love being creative.
             </div>
         </div>
     )

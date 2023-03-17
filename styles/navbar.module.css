@@ -1,22 +1,21 @@
-.name{
-    font-weight: bold;
-    font-size: 3rem;
-
-    text-align: right;
-
-    padding: 10rem 0rem 3rem 0rem;
-}
-
 .navlist{
-    list-style: none;
-    padding: 0;
+    padding-right: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: inherit;
+
+    gap: 0.5rem;
 }
 
 .navlist > * {
+    font-size: 1rem;
     text-align: right;
+    text-decoration: none;
+    color: inherit;
     transition: color 0.5s;
 }
 
 .navlist > *:hover{
-    color: rgb(40, 40, 40);
+    color: rgb(255, 64, 89);
 }

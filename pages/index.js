@@ -25,8 +25,6 @@ function Home({ allWorksData }) {
             <div className={styles.main}>
                 <Landing />
                 <Spacer />
-                <About />
-                <Spacer />
                 <Works />
             </div>
                 

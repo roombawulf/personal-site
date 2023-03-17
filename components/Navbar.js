@@ -1,16 +1,14 @@
+import Link from 'next/link'
 import styles from '../styles/navbar.module.css'
 
 function Navbar() {
     return(
-        <>
-            <div className={styles.name}> Haris. </div>
-            <ul className={styles.navlist}>
-                <li> projects </li>
-                <li> playground </li>
-                <li> blog </li>
-                <li> about </li>
-            </ul>
-        </>
+        <div className={styles.navlist}>
+            <Link href='#'> projects </Link>
+            <Link href='#'> playground </Link>
+            <Link href='#'> blog </Link>
+            <Link href='#'> about </Link>
+        </div>
     )
 }
 export default Navbar

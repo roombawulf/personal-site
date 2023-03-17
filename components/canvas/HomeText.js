@@ -1,47 +1,40 @@
 import { Text, shaderMaterial } from "@react-three/drei"
 import { useFrame, useThree } from "@react-three/fiber"
-import { use, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import * as THREE from 'three'
 import gsap from 'gsap'
 
 
 
 function HomeText(){
-    
-    const [hovered, setHovered] = useState(null)
-    const color = useMemo(() => {
-        return new THREE.Color()
-    }, [hovered])
+
     const {size} = useThree()
     const text = useRef()
 
-    const over = (e) => (e.stopPropagation(), setHovered(true))
-    const out = () => {setHovered(false)}
+    const properties = {
+        font: '/fonts/cairo-v22-latin-regular.woff',
+        color: 'black',
+        fillOpacity: 0,
+    }
 
-    useFrame((state, delta) => {
-        text.current.material.color.lerp(color.set(hovered ? 'salmon' : 'black'), 0.2)
-    })
-
-    useLayoutEffect(() => {
+    useEffect(() => {
         let context = gsap.context(() => {
-            gsap.to(text.current, { fillOpacity: 1, ease: 'power2.inOut', duration: 1.5, delay: 1.5})
+            gsap.to(text.current, { fillOpacity: 1, ease: 'power2.inOut', duration: 0.5})
         })
+        console.log(size)
     })
 
     return (
-            <Text 
-                ref={text}
-                font='/fonts/cairo-v22-latin-regular.woff'
-                lineHeight={0.7}
-                fontSize={2 * size.width/size.height}
-                color='black'
-                fillOpacity={0}
-                letterSpacing={0.2}
-                onPointerOver={over}
-                onPointerOut={out}
-                >
-                    HARIS
-            </Text>
-    )
+        <Text 
+            ref={text}
+            font={properties.font}
+            fontSize={size.width/size.height}
+            color={properties.color}
+            fillOpacity={properties.fillOpacity}
+            maxWidth={`${size.width}px`}
+            >
+                Software Developer
+        </Text>
+)
 }
 export default HomeText

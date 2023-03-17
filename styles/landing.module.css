@@ -1,19 +1,16 @@
 .landingContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
     height: 100svh;
 }
 
 .canvasContainer {
-    height: 80%;
+    height: inherit;
 }
 
-.ruleContainer {
-    display: flex;
-    height: 10%;
-    justify-content: center;
-    align-items: center;
-}
-
-.lineRule {
-    width: 0%;
-    border-bottom: solid 2px black;
+.greeting {
+    font-size: 4.5rem;
+    font-weight: bold;
 }
