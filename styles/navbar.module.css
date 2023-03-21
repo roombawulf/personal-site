@@ -1,8 +1,8 @@
 .navlist{
-    padding-right: 0.5rem;
+    padding-top: 15svh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+
     height: inherit;
 
     gap: 0.5rem;
@@ -16,6 +16,18 @@
     transition: color 0.5s;
 }
 
+.name{
+    font-family: "Cairo", sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 4rem;
+}
+
 .navlist > *:hover{
     color: rgb(255, 64, 89);
+}
+
+@media screen and (max-width: 1000px) {
+    .navlist{
+        padding-top: 5svh;
+    }
 }

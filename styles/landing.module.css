@@ -3,7 +3,7 @@
     justify-content: center;
     flex-direction: column;
     gap: 2rem;
-    height: 100svh;
+    height: 100vh;
 }
 
 .canvasContainer {

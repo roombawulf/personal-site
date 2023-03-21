@@ -1,5 +1,5 @@
 ---
-title: 'Three Dimensional Waves Simulation'
+title: 'Waves Simulation'
 description: 'A gerstner waves simulation created with WebGL'
 link: 'https://gerstner-waves-shader.vercel.app/'
 image: 'waves-shader.jpg'

@@ -4,6 +4,7 @@ import styles from '../styles/navbar.module.css'
 function Navbar() {
     return(
         <div className={styles.navlist}>
+            <Link href='/' className={styles.name}> حارس </Link>
             <Link href='#'> projects </Link>
             <Link href='#'> playground </Link>
             <Link href='#'> blog </Link>

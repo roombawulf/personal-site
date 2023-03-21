@@ -1,7 +1,21 @@
+import { motion } from "framer-motion"
+
 function Spacer(){
+
+    const rule = {
+        offscreen: { width: '0%' },
+        onscreen: { 
+            width: '90%',
+            transition: {
+                ease: "easeInOut",
+                duration: 1.2
+            }
+        }
+    }
+
     return (
         <div className='spacer' style={spacerStyles}>
-            <div className='rule' style={ruleStyles}/>
+            <motion.div className='rule' style={ruleStyles} variants={rule} initial="offscreen" whileInView="onscreen" viewport={{ once: true }}/>
         </div>
     )
     

@@ -7,12 +7,7 @@ function Landing(){
 
     return (
         <div className={styles.landingContainer}>
-            <div className={styles.greeting}>
-                Hi,
-            </div>
-            <div className={styles.greeting}>
-                I'm a software developer and love being creative.
-            </div>
+            <Experience />
         </div>
     )
 }

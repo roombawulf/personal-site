@@ -1,0 +1,29 @@
+.section {
+    display: grid;
+    grid-template-areas:
+    "smHeader       ."
+    "lgHeader       ."
+    "content content"
+    ;
+
+    height: fit-content;
+}
+
+.smtitle{
+    font-family: "Cairo", sans-serif;
+    grid-area: smHeader;
+    font-size: 1.0rem;
+    padding-left: 0.5rem;
+}
+.lgtitle{
+    grid-area: lgHeader;
+    font-size: 6rem;
+    font-weight: 600;
+
+    margin-bottom: 8rem;
+}
+
+.content{
+    grid-area: content;
+}
+

@@ -7,6 +7,7 @@ import Navbar from '../components/Navbar'
 import styles from '../styles/layout.module.css'
 
 import { getWorksData } from "../lib/works"
+import { useEffect } from 'react'
 export async function getStaticProps() {
     const allWorksData = getWorksData()
     return {
@@ -17,6 +18,7 @@ export async function getStaticProps() {
 }
 
 function Home({ allWorksData }) {
+
     return( 
         <div className={styles.grid}>
             <div className={styles.nav}>
@@ -25,7 +27,7 @@ function Home({ allWorksData }) {
             <div className={styles.main}>
                 <Landing />
                 <Spacer />
-                <Works />
+                <Works data={allWorksData} />
             </div>
                 
         </div>

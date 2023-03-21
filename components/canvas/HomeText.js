@@ -1,39 +1,64 @@
 import { Text, shaderMaterial } from "@react-three/drei"
-import { useFrame, useThree } from "@react-three/fiber"
+import { useFrame, useThree, extend } from "@react-three/fiber"
 import { useEffect, useRef, useState } from "react"
-import * as THREE from 'three'
 import gsap from 'gsap'
 
 
+import vertexShader from './materials/text-material/vertexShader.glsl'
+import fragmentShader from './materials/text-material/fragmentShader.glsl'
+const TextMaterial = shaderMaterial(
+    { time: 0.0, hover: 0.0 },
+    vertexShader,
+    fragmentShader
+)
+extend({ TextMaterial })
 
 function HomeText(){
 
-    const {size} = useThree()
+    const [hover, setHover] = useState(null)
+    const {size, viewport} = useThree()
     const text = useRef()
+    const material = useRef()
 
-    const properties = {
-        font: '/fonts/cairo-v22-latin-regular.woff',
-        color: 'black',
-        fillOpacity: 0,
+    const properties = window.innerWidth < 1000
+    ? { string: 'Creative Software Developer', scale: 1.8, width: viewport.width/2, align: 'center' }
+    : { string: 'Hi, I am a Software Developer and love getting creative', scale: 0.8, width: viewport.width, align: 'left' }
+
+    const over = () => {setHover(true)}
+    const out = () => {setHover(false)}
+    const animateHover = (value) => {
+        gsap.to(material.current, {
+            hover: value,
+            duration: 1.0,
+            ease: "power3.out"
+        })
     }
 
     useEffect(() => {
-        let context = gsap.context(() => {
-            gsap.to(text.current, { fillOpacity: 1, ease: 'power2.inOut', duration: 0.5})
-        })
-        console.log(size)
+        if (text.current){
+            if(hover){animateHover(1.0)}
+            if(!hover){animateHover(0.0)}
+        }
+    })
+
+    useFrame(({clock}) => {
+        material.current.time = clock.elapsedTime
     })
 
     return (
         <Text 
             ref={text}
-            font={properties.font}
-            fontSize={size.width/size.height}
-            color={properties.color}
-            fillOpacity={properties.fillOpacity}
-            maxWidth={`${size.width}px`}
+            font='/fonts/cairo-v22-latin-regular.woff'
+            fontSize={properties.scale * size.width/size.height}
+            maxWidth={properties.width}
+            textAlign={properties.align}
+            lineHeight={1.2}
+            outlineWidth={'1%'}
+            onPointerOver={over}
+            onPointerOut={out}
             >
-                Software Developer
+                {properties.string}
+                <textMaterial ref={material} key={TextMaterial.key}/>
         </Text>
 )
 }
