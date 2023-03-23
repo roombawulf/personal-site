@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 
 
 import workStyles from '../styles/works.module.css'
-import Section from "./Section"
+import Section from "../components/Section"
 
 function ProjectsCard({ data }){
     
@@ -38,11 +38,14 @@ function ProjectsCard({ data }){
                             src={`/images/${project.image}`}
                             alt={project.id}
                             fill
+                            style={{objectFit: 'cover'}}
                             className={workStyles.picture}
                         />
                     </motion.div>
-                    <motion.div className={workStyles.title} variants={cardItems}>
-                        {project.title}
+                    <motion.div variants={cardItems} className={workStyles.title}>
+                        <Link href={project.link} className={workStyles.link} target='_blank'>
+                            {project.title}
+                        </Link>
                     </motion.div>
                     <motion.div className={workStyles.description} variants={cardItems}>
                         {project.description}

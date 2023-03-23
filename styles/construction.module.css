@@ -1,0 +1,36 @@
+.container{
+    margin-inline: auto;
+    height: 100svh;
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+
+.warning{
+    font-size: 5vw;
+    font-weight: 600;
+    width: fit-content;
+}
+
+.message{
+    font-size: 3vw;
+    width: fit-content;
+    text-align: justify;
+}
+
+
+.homeLink{
+    text-decoration: none;
+    border-bottom: solid black 4px;
+    color: inherit;
+    font-size: 4vw;
+    transition: color 0.5s, border-bottom-color 0.5s;
+}
+
+.homeLink:hover{
+    color: rgb(255, 64, 89);
+    border-bottom-color: rgb(255, 64, 89);
+}

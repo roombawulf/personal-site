@@ -16,9 +16,14 @@
     transition: color 0.5s;
 }
 
+.navbroken {
+    text-decoration: line-through;
+}
+
 .name{
     font-family: "Cairo", sans-serif;
     font-size: 1.2rem;
+    font-weight: bold;
     margin-bottom: 4rem;
 }
 
@@ -28,6 +33,18 @@
 
 @media screen and (max-width: 1000px) {
     .navlist{
-        padding-top: 5svh;
+        padding-top: 0;
+        justify-content: center;
+        gap: 3rem;
+        align-items: center;
+    }
+
+    .navlist > * {
+        width: fit-content;
+    }
+
+    .navlist > * {
+        text-align: center;
+        font-size: 6vw;
     }
 }

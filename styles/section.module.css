@@ -7,6 +7,7 @@
     ;
 
     height: fit-content;
+    margin-bottom: 5rem;
 }
 
 .smtitle{
@@ -20,10 +21,16 @@
     font-size: 6rem;
     font-weight: 600;
 
-    margin-bottom: 8rem;
+    margin-bottom: 6rem;
 }
 
 .content{
     grid-area: content;
+}
+
+@media screen and (max-width: 1000px) {
+    .lgtitle{
+        font-size: 5rem;
+    }
 }
 

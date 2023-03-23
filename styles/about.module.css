@@ -1,49 +1,63 @@
-.about{
-    margin: 0;
-    padding: 0;
-    height: fit-content;
+.grid{
+    display: grid;
+    grid-template-areas:
+        "pic name"
+        "pic hero"
+    ;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr 2fr;
+    gap: 5rem;
+
+    height: 100%;
+    width: 90%;}
+
+.title{
+    grid-area: name;
+    font-size: 5rem;
 }
 
-.greetings,
-.me{
-    margin: 0;
-    padding: 0;
-    height: 100svh;
-}
-
-.greetings{
-    display: flex;
-}
-
-.introHeader{
-    margin: 0;
-    padding: 0;
-    font-size: 8rem;
-}
-.nameHeader{
-    margin: 0;
-    padding: 0;
-    font-size: 4rem;
-    
-    width: 100%;
-    align-self: flex-end;
-    text-align: end;
-}
 .description{
-    font-size: 2rem;
+    grid-area: hero;
+    width: 80%;
     text-align: justify;
-    width: 60%;
 }
 
-@media screen and (max-width: 800px) {
-    .introHeader{
-        font-size: 3rem;
+.picture{
+    position: relative;
+    grid-area: pic;
+}
+
+@media screen and (max-width: 1600px) {
+    .title{
+        font-size: 4rem;
     }
-    .nameHeader{
-        font-size: 1.5rem;
+}
+
+@media screen and (max-width: 1400px) {
+    .title{
+        font-size: 3.5rem;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .grid{
+        grid-template-areas:
+            "name"
+            "hero"
+            "pic"
+        ;
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+        gap: 2rem;
+    }
+    .title{
+        font-size: 3.5rem;
     }
     .description{
-        font-size: 1rem;
-        width: fit-content;
+        width: inherit;
+    }
+    .picture{
+        height: 90svw;
+        width: 90svw;
     }
 }

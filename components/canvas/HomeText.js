@@ -21,7 +21,7 @@ function HomeText(){
     const material = useRef()
 
     const properties = window.innerWidth < 1000
-    ? { string: 'Creative Software Developer', scale: 1.8, width: viewport.width/2, align: 'center' }
+    ? { string: 'Creative Software Developer', scale: 1.7, width: viewport.width/2, align: 'center' }
     : { string: 'Hi, I am a Software Developer and love getting creative', scale: 0.8, width: viewport.width, align: 'left' }
 
     const over = () => {setHover(true)}
@@ -34,12 +34,12 @@ function HomeText(){
         })
     }
 
-    useEffect(() => {
-        if (text.current){
-            if(hover){animateHover(1.0)}
-            if(!hover){animateHover(0.0)}
-        }
-    })
+    // useEffect(() => {
+    //     if (text.current){
+    //         if(hover){animateHover(1.0)}
+    //         if(!hover){animateHover(0.0)}
+    //     }
+    // })
 
     useFrame(({clock}) => {
         material.current.time = clock.elapsedTime

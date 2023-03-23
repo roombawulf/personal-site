@@ -22,10 +22,8 @@
     position: relative;
     grid-area: pic;
     height: 25vw;
-    width: 25vw;
-}
-.picture > * {
-    object-fit: cover;
+    width: 30vw;
+    overflow: hidden;
 }
 
 .title{
@@ -37,8 +35,17 @@
 
 .description{
     grid-area: description;
-    font-size: 1rem;
     text-align: right;
+}
+
+.link{
+    text-decoration: none;
+    color: rgb(20, 20, 20);
+    transition: color 0.5s;
+}
+
+.link:hover{
+    color: rgb(255, 64, 89);
 }
 
 
@@ -46,26 +53,17 @@
     .title{
         font-size: 5rem;
     }
-    .description{
-        font-size: 0.9rem;
-    }
 }
 
 @media screen and (max-width: 1400px) {
     .title{
         font-size: 4rem;
     }
-    .description{
-        font-size: 0.9rem;
-    }
 }
 
 @media screen and (max-width: 1200px) {
     .title{
         font-size: 3rem;
-    }
-    .description{
-        font-size: 0.8rem;
     }
 }
 
@@ -87,13 +85,12 @@
         text-align: left;
     }
     .description{
-        font-size: 0.8rem;
         text-align: left;
     }
     .picture{
         position: relative;
         grid-area: pic;
-        height: 90svw;
-        width: 90svw;
+        height: 30vw;
+        width: 90%;
     }
 }
