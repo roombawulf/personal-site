@@ -5,7 +5,7 @@ import Prism from "./Prism"
 function Experience(){
     return(
         <Canvas>
-            <color attach="background" args={['#FAEDCD']} />
+            <color attach="background" args={['#fdf8ec']} />
             <HomeText />
             <Prism />
         </Canvas>
