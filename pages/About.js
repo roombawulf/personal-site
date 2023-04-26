@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 import styles from '../styles/about.module.css'
 import Section from '../components/Section'
@@ -20,6 +21,14 @@ function About(){
                     creative design, both in UI/UX and graphical technologies. So, I found out about WebGL
                     and have been continously learning how it works, its capabilities and made this site to
                     showcase what can be done with it.
+                </div>
+                <div className={styles.links}>
+                    <a href={'https://github.com/roombawulf'} className={styles.link} target='_blank'>
+                        github
+                    </a>
+                    <a href={'https://twitter.com/roombawulf'} className={styles.link} target='_blank'>
+                        twitter
+                    </a>
                 </div>
                 <div className={styles.picture}>
                     <Image 

@@ -3,13 +3,15 @@
     grid-template-areas:
         "pic name"
         "pic hero"
+        "pic   links"
     ;
     grid-template-columns: 1fr 2fr;
-    grid-template-rows: 1fr 2fr;
+    grid-template-rows: 1fr 0.5fr 1fr;
     gap: 5rem;
 
     height: 100%;
-    width: 90%;}
+    width: 90%;
+}
 
 .title{
     grid-area: name;
@@ -20,6 +22,23 @@
     grid-area: hero;
     width: 80%;
     text-align: justify;
+}
+
+.links{
+    grid-area: links;
+    display: flex;
+    gap: 2rem;
+}
+
+.link{
+    text-decoration: none;
+    color: rgb(20, 20, 20);
+    transition: color 0.5s;
+    height: fit-content;
+}
+
+.link:hover{
+    color: rgb(255, 64, 89);
 }
 
 .picture{
@@ -44,6 +63,7 @@
         grid-template-areas:
             "name"
             "hero"
+            "links"
             "pic"
         ;
         grid-template-columns: auto;
