@@ -33,7 +33,7 @@ function ProjectsCard({ data }){
         <div className={workStyles.cardContainer}>
             {data?.map((project) => 
                 <motion.div className={workStyles.card} key={project.id} variants={card} initial="offscreen" whileInView="onscreen" viewport={{ once: true }}>
-                    <motion.div className={workStyles.picture} variants={cardItems}>
+                    <motion.div className={workStyles.picture} key={project.id} variants={cardItems}>
                         <Image 
                             src={`/images/${project.image}`}
                             alt={project.id}

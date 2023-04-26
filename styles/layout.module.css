@@ -24,7 +24,7 @@
 .navMobile{
     display: none;
     position: absolute;
-    background-color: #FAEDCD;
+    background-color: inherit;
     width: 95vw;
     height: 100%;
     z-index: 1;
